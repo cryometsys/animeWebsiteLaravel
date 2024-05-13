@@ -1,0 +1,1087 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #dcfaf5;
+}
+
+header {
+    background-color: #e4dedecc;
+    transition: background-color 0.5s ease;
+    padding: 0;
+    margin: 0;
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    z-index: 100;
+}
+
+.profileHeaderSection {
+    position: absolute;
+}
+
+header:hover {
+    background-color: #f0ebeb;
+  }
+  
+.container {
+    display: flex; 
+    flex-grow: 1;
+    align-items: center;
+    max-width: 100%;
+    justify-content: space-evenly;
+}
+  
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 10px; 
+}
+  
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 10px;
+}
+  
+nav li {
+    display: inline-block;
+    padding: 5px;
+}
+  
+nav a {
+    text-decoration: none;
+    color: #070707;
+    font-weight: 500;
+}
+  
+nav a:hover {
+    font-weight: bolder;
+}
+
+.loginBtn, .signupBtn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+  
+.loginBtn:hover, .signupBtn:hover {
+    background-color: #0069d9;
+}
+  
+.search-dropdown {
+    position: relative;
+}
+  
+.search-dropdown:hover .search-options {
+    display: block;
+}
+  
+.search-options {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    padding: 10px;
+    list-style: none;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+}
+
+.profileAvatar {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.bodyText {
+    font-size: 2rem;
+}
+
+.anime-body {
+    margin-top: 20px;
+}
+
+.anime-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto 1fr auto auto auto auto;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.animeImage {
+    grid-row: span 2;
+}
+  
+.animeIntro {
+    grid-row: span 1;
+    grid-column: span 2;
+}
+
+.animeTitle {
+    font-weight: bold;
+}
+  
+.listDropdown {
+    align-self: flex-start;
+    grid-row: 3;
+}
+  
+.animeDetails {
+    grid-row: 2 / span 2;
+    grid-column: 2;
+}
+
+.animeDetails p {
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;  
+}
+
+@media (max-width: 768px) {
+    .anime-body {
+      grid-template-columns: 1fr;
+    }
+}
+
+.anime-image {
+    max-width: 100%;
+    max-height: 350px;
+}
+  
+.listDropdown {
+    align-self: flex-start;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.listDropdown button {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+  
+.listOptions {
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+}
+
+.listOptions a {
+    text-decoration: none;
+}
+  
+.listDropdown:active .listOptions {
+    display: block;
+    opacity: 1;
+}
+
+.animeRecommendations {
+    grid-row: 6;
+    grid-column: 1 / span 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    width: 100%;
+    margin-top: 20px;
+    flex-direction: column;
+}
+
+.animeRecommendations p {
+    font-size: smaller;
+    font-weight: 600;
+}
+  
+.recommendationList {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0; 
+    margin: 0;
+    justify-content: space-between;
+}
+  
+.recommendationList li {
+    width: calc(20% - 30px);
+    margin: 15px;
+}  
+
+.recommendationList li img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    margin-bottom: 5px;
+  }
+
+.recommendationList li a {
+    text-decoration: none;
+    color: inherit;
+}
+  
+.recommendationList li a:hover {
+    opacity: 0.8;
+}
+
+.anime-body .animeChannels {
+    display: flex;
+    grid-row: 2 / span 2;
+}
+  
+.anime-body .animeChannel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    list-style: none;
+    padding: 0 10px;
+    margin: inherit;
+    width: 50%; 
+    text-align: center;
+}
+
+.animeChannel li {
+    padding: 5px 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}  
+
+.animeChannel a {
+    text-decoration: none;
+    color: black;
+}
+
+.animeRating {
+    grid-row: 4;
+}
+
+.animePopular {
+    grid-row: 5;
+}
+
+.animeRating, .animePopular {
+    text-align: center;
+    border-radius: 5px;
+    background-color: aquamarine;
+}
+
+.animeRating > p, .animePopular > p, .animeEpisodeCount > p, .animeScore > p {
+    margin: 0;
+    padding: 5px;
+}
+
+.animeEpisodeCount {
+    grid-row: 4;
+    grid-column: 2 / span 2;
+}
+
+.animeScore {
+    grid-row: 5;
+    grid-column: 2 / span 2;
+}
+
+.animeEpisodeCount, .animeScore {
+    border: 2px solid #4b4242;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.footer {
+    background-color: #2f2f2f;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  .container-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto; 
+  }
+  
+  .footerBrand {
+    display: flex;
+    align-items: center;
+  }
+  
+  .footerBrand p {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+  
+  .socialLinks {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 5px auto 10px auto;
+}
+
+.socialLinks a {
+      padding: 5px;
+      margin: 0 10px;
+}
+  
+.socialLinks a img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.footerWriting p {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 0.5rem;
+    font-weight: 2%;
+    color: grey;
+}
+
+.footerDivider {
+    border: none;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 10px 0;
+    width: calc(50%);
+}
+
+.profileHeader {
+    position: relative;
+    width: 100%;
+}
+
+#grad1 {
+    height: 100px;
+    background-image: linear-gradient(to bottom, rgba(255,0,0,0), rgb(41, 40, 40));
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.profileCover {
+    height: 60vh;
+    width: 100%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: cover;
+}
+
+.profileSection {
+    position: absolute;
+    left: 40px;
+    bottom: 0;
+    margin: auto;
+    display: inline-flex;
+    align-items: flex-end;
+}
+
+.profileImage {
+    width: 160px;
+    height: 160px;
+}
+
+.profileName {
+    font-size: larger;
+    font-weight: bold;
+    color: whitesmoke;
+    margin: 0;
+    padding: 20px;
+}
+
+.profileLinks ul {
+    list-style-type: none;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+    background-color: #2f2f2f;
+}
+
+.profileLinks a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px 30px;
+}
+
+.profileLinks a:hover {
+    color: rgb(144, 144, 255);
+    font-weight: bold;
+}
+
+.profileLinks a.active {
+    color: rgb(144, 144, 255); 
+    font-weight: bold;
+  }
+
+#profileContent {
+    height: auto;
+    width: 100%;
+    background-color: rgb(197, 194, 194);
+    padding: 20px;
+}
+
+.myAnimeList {
+    display: grid;
+    grid-template-columns: 200px 2fr;
+    grid-template-rows: repeat(3, auto);
+    column-gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.myAnime {
+    grid-column: 2;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(auto-fill, auto);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px 0;
+    gap: 15px;
+}
+
+.myAnime h2 {
+    grid-column: 1 / span 5;
+    padding: 10px 0 0 0;
+    margin:0;
+    color: azure;
+    font-size: 1em;
+}
+
+.myAnime img {
+    width: calc(100%);
+    height: auto;
+    object-fit: cover;
+    align-self: center;
+}
+
+.image-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+  
+.image-name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    margin: 0;
+    color: #fff;
+    background-color: rgba(26, 22, 22, 0.712);
+    text-align: left;
+    text-decoration: none;
+    font-size: 0.8rem;
+}
+  
+.image-name:hover {
+    color: #9AC8CD;
+}
+
+.episode-number {
+    position: absolute; 
+    bottom: 5px;
+    right: 5px;
+    font-size: 0.8em;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-top: 0;
+}
+
+.animeOperation {
+    grid-column: 1;
+    padding: 40px 0 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputFilter {
+    max-width: 100%;
+    border: none;
+    margin: 10px 0;
+    background-color: #3a3737;
+    color: #ffffff;
+    border: none;
+}
+
+.animeOperation p {
+    font-size: small;
+    color: whitesmoke;
+    margin: 0;
+}
+
+.animeOperation li {
+    list-style: none;
+}
+
+.animeOperation a {
+    margin: 5px 10px;
+    cursor: pointer;
+    color: white;
+    padding: 0 5px;
+    text-decoration: none;
+}
+
+.gridLink.active {
+    background-color: #2f2f2f;
+    border-radius: 5px;
+}
+
+.myAnime.hidden {
+    display: none;
+}
+
+.favoriteContainer {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    justify-content: start;
+    margin: 0 auto;
+    background-color: #302e33;
+    padding: 20px 10px;
+}
+
+.favoriteImage {
+    width: 80px;
+    height: auto;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.imageContainer {
+    position: relative;
+}
+
+.favoriteNameContainer {
+    color: white;
+    padding: 3px;
+    margin: -20% 0;
+    width: auto;
+    text-align: center;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.favoriteNameContainer p {
+    margin: 0;
+    padding: 0;
+    font-size: small;
+}
+
+.imageContainer:hover .favoriteNameContainer {
+    display: block;
+    background-color: #0f0e0ece;
+}
+
+.anime-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    /* border: 1px solid #ddd; */
+    border-radius: 5px;
+    flex-wrap: wrap;
+}
+  
+.overview, .genres {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: #2f2f2fa1;
+    padding: 5px;
+    border-radius: 5px;
+}
+  
+.anime-stats h2 {
+    margin-bottom: 20px;
+    width: 100%;
+    font-weight: bolder;
+    color: #ffffff;
+    padding: 10px;
+}
+  
+.stat-box, .genre-summary {
+    width: calc(50% - 40px);
+    padding: 10px;
+    border: 1px solid #f8fdcb;
+    background-color: #111111;
+    border-radius: 10px;
+    margin: 20px;
+    text-align: start;
+}
+  
+.stat-box p {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    color: #9b9a9a;
+}
+
+.genre-summary h3 {
+    font-size: 2em;
+    margin-bottom: 5px;
+    color: whitesmoke;
+}
+
+.genreSummaryName {
+    float: left;
+}
+
+.genreCountValue {
+    float: right;
+}
+  
+.summary-list {
+    padding: 0 0 10px 10px;
+    margin: 0;
+}
+
+.genre-summary hr {
+    border-color: goldenrod;
+    border-width: 5px;
+    margin: 0 0 5px 0;
+    padding: 0;
+    width: 100%;
+}
+
+.summary-list li {
+    list-style-type: none;
+    margin-bottom: 3px;
+    font-size: medium;
+    color: rgb(194, 193, 193);
+}
+  
+.stat-box span {
+    color: #ffffff;
+    font-size: larger;
+}
+
+.summaryItems {
+    float: left;
+}
+
+.genre-summary li span {
+    font-size: 0.8em;
+    color: #aaa;
+    float: right;
+    margin-right: 10px;
+}
+
+.settingsSection h1, .settingsSection h4 {
+    margin: 20px 0;
+    text-align: center;
+    color: #153448;
+}
+
+.user-settings {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px auto 20px;
+    width: 80%;
+}
+  
+.user-settings h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+  
+.user-settings .setting {
+    margin-bottom: 15px;
+}
+  
+.user-settings .setting label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #322C2B;
+}
+
+.user-settings .setting input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #6e6e6e62;
+    color: #4d4d4d;
+    font-weight: 500;
+}
+  
+#changeButton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: none;
+    margin-top: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+  
+.user-settings .setting button:hover {
+    background-color: #3e8e41;
+}
+
+.setting input:focus + #changeButton {
+    display: inline-block;
+}
+  
+.privacy-settings h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+  
+.privacy-settings p {
+    margin-bottom: 5px;
+    font-size: 1rem;
+    padding-left: 20px;
+}
+
+.privacy-settings .radio-options input[type="radio"] {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+}
+  
+.privacy-settings .radio-options label {
+    cursor: pointer;
+    margin: 0;
+}
+
+.photo-uploads {
+    margin: 20px 0 ;
+}
+
+.photo-uploads h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+  
+.photo-upload {
+    margin-bottom: 20px;
+    display: flex;
+}
+  
+.current-photo {
+    display: inline-block;
+    margin-right: 15px;
+}
+  
+.current-photo img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+  
+.upload-option {
+    display: inline-block;
+    margin-top: 0;
+}
+  
+.upload-option label {
+    display: block;
+    cursor: pointer;
+}
+  
+.upload-option input[type="file"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+  
+.upload-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    margin: 0;
+    border: 2px dashed #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #f2f2f2;
+    padding: 0;
+}
+  
+.upload-box p {
+    text-align: center;
+    font-size: 0.8em;
+    margin: 0;
+}
+
+.current-cover {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.current-cover img {
+    height: 200px;
+    width: 550px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.settingsButton {
+    display: flex;
+    justify-content: end;
+    margin: 50px 0;
+}
+
+.settingsButton button {
+    max-width: 250px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 30px;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+}
+
+.logoutBtn {
+    background-color: #0069d9;
+}
+
+.deleteBtn {
+    background-color: #ff0202;
+}
+
+nav.navigation {
+  display: flex;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #222831;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-bar {
+    flex: 1;
+    max-width: 200px;
+    margin-right: 20px;
+}
+
+.search-bar input#search {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.dropdown-menus {
+    display: flex;
+    justify-content: center;
+    width: 900px;
+    height: 50px;
+    /* z-index: -10; */
+}
+
+.dropdownMenu {
+    background-color: rgb(121, 121, 121);
+    margin: 0 15px;
+    width: calc(25%);
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+    /* z-index: -1; */
+}
+
+.dropdownToggle {
+    margin-top: 3%;
+    color: white;
+    font-size: large;
+}
+
+.dropdownContent {
+    background-color: #76ABAE;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+.dropdownContent li {
+    color: white;
+}
+
+.dropdownMenu:hover .dropdownContent {
+    display: block;
+}
+
+.animeDisplay {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, auto);
+    gap: 10px;
+    margin: 0 auto;
+    max-width: 900px;
+    padding: 20px 0;
+}
+.animeType {
+    grid-column: 1;
+    font-size: large;
+    font-weight: bold;
+    color: #0e0e0e;
+}
+.animeDisplay .browseView {
+    display: flex;
+    text-align: right;
+    grid-column: 5;
+    align-items: center;
+    justify-content: end;
+}
+
+.browseView a {
+    font-size: small;
+    text-decoration: none;
+    color: black;
+}
+
+.browseView a:hover {
+    color:#202020;
+}
+
+.grid-item a {
+    text-decoration: none;
+    color: black;
+    text-align: left;
+}
+
+.grid-item--image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+  
+.grid-item--image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+  
+.animeType.grid-item--image p {
+    margin-top: 5px;
+    font-size: 0.8rem;
+}
+
+.user-panel {
+  margin: 0 auto; /* Center the section horizontally */
+  max-width: 1000px; /* Set a maximum width */
+  padding: 20px; /* Add side margins */
+  
+}
+
+.searchUser {
+  margin-bottom: 15px; /* Add spacing below the search bar */
+  width: 100%;
+}
+
+.searchUser input {
+    width: 100%;
+    border: 1px solid #153448;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.searchUser input:focus {
+    background-color: #70707065;
+}
+
+.following-list {
+  /* Styles for the following list container */
+  background-color: #eee; /* Light background color */
+  border: 1px solid #ddd; /* Border for the section */
+}
+
+.following-list h3 {
+  margin-bottom: 10px; /* Add spacing below the heading */
+  text-align: center; /* Center the heading text */
+  padding-top: 10px;
+}
+
+.following-list ul {
+  list-style: none; /* Remove default bullet points */
+  padding: 10px 20px;
+  margin: 0;
+}
+
+.following-list li {
+  margin-bottom: 15px; /* Add spacing between list items */
+  background-color: #f5f5f5; /* Light background color for usernames */
+  border: 1px solid #ddd; /* Border for usernames */
+  padding: 5px; /* Add padding to usernames */
+  width: 100%; /* Make usernames full width */
+}
+
+.following-list a {
+    font-size: large;
+    text-decoration: none; /* Remove underline from links */
+    /* color: #333; Set link color */
+    color: #153448;
+}
+
+.following-list a:hover {
+  color: #666; /* Change link color on hover */
+  font-weight: 720;
+}
+
+.animeContainer h1 {
+    padding: 2% 0 0 10%;
+}
