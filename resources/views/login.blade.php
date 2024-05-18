@@ -7,7 +7,7 @@
                 <h1 class="fw-bold mb-0 fs-2">WELCOME BACK</h1>
                 </div>
                 <div class="modal-body p-5 pt-0">
-                    <form action="/loginUser" method="POST" class="" data-bitwarden-watching="1">
+                    <form action="/overview" method="POST" class="" data-bitwarden-watching="1">
                         @csrf
                         <div class="form-floating mb-3">
                         <input type="email" name="loginUserMail" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">

@@ -11,34 +11,35 @@
     <header>
         <div class="container">
             <h1 class="logo">KONE</h1>
+            {{-- @if(session()->has('user_id')) --}}
             @auth
-            <nav class="nav">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Anime List</a></li>
-                    <li class="search-dropdown">
-                        <a href="#">Browse</a>
-                        <ul class="search-options">
-                            <li><a href="#">Popular</a></li>
-                            <li><a href="#">Seasonal</a></li>
-                            <li><a href="#">Latest</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Social</a></li>
-                </ul>
-            </nav>
-            <nav class="nav-right">
-              <ul>
-                  <li class="search-dropdown">
-                  <img src="https://i.pinimg.com/736x/ae/a7/a9/aea7a9551cda1f88cc5e6e7ea52709f1.jpg" class="profileAvatar">
-                  <ul class="search-options">
-                    <li><a href="overview.html">Profile</a></li>
-                    <li><a href="settings.html">Settings</a></li>
+              <nav class="nav">
+                  <ul>
+                      <li><a href="#">Home</a></li>
+                      <li><a href="#">Profile</a></li>
+                      <li><a href="#">Anime List</a></li>
+                      <li class="search-dropdown">
+                          <a href="#">Browse</a>
+                          <ul class="search-options">
+                              <li><a href="#">Popular</a></li>
+                              <li><a href="#">Seasonal</a></li>
+                              <li><a href="#">Latest</a></li>
+                          </ul>
+                      </li>
+                      <li><a href="#">Social</a></li>
                   </ul>
-                  </li>
-              </ul>
-            </nav>
+              </nav>
+              <nav class="nav-right">
+                <ul>
+                    <li class="search-dropdown">
+                    <img src="https://i.pinimg.com/736x/ae/a7/a9/aea7a9551cda1f88cc5e6e7ea52709f1.jpg" class="profileAvatar">
+                    <ul class="search-options">
+                      <li><a href="overview.html">Profile</a></li>
+                      <li><a href="settings.html">Settings</a></li>
+                    </ul>
+                    </li>
+                </ul>
+              </nav>
             @else
             <nav class="nav">
               <ul>
@@ -65,10 +66,18 @@
                 </li>
               </ul>
             </nav>
+            {{-- @endif --}}
             @endauth
-            
         </div>
     </header>
+
+    @if(session()->has('success'))
+        <div class="container container--narrow">
+          <div class="alert alert-success text-center">
+            {{session('success')}}
+          </div>
+        </div>
+    @endif
 
     {{ $slot }}
 
@@ -96,7 +105,7 @@
             </a>
           </div>
           <div class="footerWriting">
-            <p>Copyright c 2022 all rights reserved</p>
+            <p>Copyright &copy; {{date('Y')}} all rights reserved</p>
           </div>
         </div>
     </footer>
