@@ -1085,3 +1085,20 @@ nav.navigation {
 .animeContainer h1 {
     padding: 2% 0 0 10%;
 }
+
+.followButton {
+    position: absolute;
+    bottom: 30px;
+    right: 100px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 5%;
+}
+
+.followButton.remove {
+    background-color: red;
+}

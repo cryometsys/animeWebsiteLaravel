@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Follow;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -35,7 +36,8 @@ class UserController extends Controller
         ])) {
             Session::put('user_id', auth()->user()->user_id);
             $request->session()->regenerate();
-            return redirect('/')->with('success', 'You have successfully logged in.');
+            $username = auth()->user()->username;
+            return redirect("/user/$username/overview")->with('success', 'You have successfully logged in.');
         }
         else {
             return redirect('/login')->with('failure', 'Invalid login attempt.');
@@ -43,7 +45,8 @@ class UserController extends Controller
     }
     public function showCorrectHomepage(Request $request) {
         if(auth()->check()) {
-            return view('overview');
+            $username = auth()->user()->username;
+            return redirect("/user/$username/overview");
         }
         else {
             return view('homepage');
@@ -53,4 +56,44 @@ class UserController extends Controller
         auth()->logout();
         return redirect('/')->with('success', 'You are now logged out.');
     }
+    public function redirectOverview(User $user) {
+        // if(auth()->check()) 
+        $followStatus = 0;
+
+        $followStatus = Follow::where([
+            ['user_id', '=', auth()->user()->user_id],
+            ['following_id', '=', $user->user_id]
+        ])
+        ->count();
+
+        return view('overview', [
+            'profilePhoto' => $user->profilePhoto,
+            'username' => $user->username, 
+            'profileCover' => $user->profileCover,
+            'followStatus' => $followStatus
+        ]);
+        // else return redirect('/');
+    }
+    public function favorites(User $user) {
+        return view('favorites', [
+            'profilePhoto' => $user->profilePhoto,
+            'username' => $user->username, 
+            'profileCover' => $user->profileCover
+        ]);
+    }
+    public function animeList(User $user) {
+        return view('anime_list', [
+            'profilePhoto' => $user->profilePhoto,
+            'username' => $user->username, 
+            'profileCover' => $user->profileCover
+        ]);
+    }
+    public function social() {
+        return view('social');  
+    }
+    // public function followUser($username) {
+    // // Logic to handle the follow operation
+    // return 'You are now following ' . $username;
+    // }   
+
 }

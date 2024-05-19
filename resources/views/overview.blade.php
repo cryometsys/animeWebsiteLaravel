@@ -2,21 +2,34 @@
 
     <div class="profileHeader">
         <div class="profileCoverPhoto">
-            <img src="https://wallpapercave.com/wp/wp12947983.jpg" alt="profileCover" class="profileCover">
-            
+            <img src="{{$profileCover}}" alt="profileCover" class="profileCover">
+            @auth
+              @if(!$followStatus && auth()->user()->username !== $username)  
+                <form action="/create-follow/{{$username}}" method="POST">
+                  @csrf
+                  <button type="submit" class="followButton">Follow</button>
+                </form>
+              @endif
+              @if($followStatus)
+                <form action="/remove-follow/{{$username}}" method="POST">
+                  @csrf
+                  <button type="submit" class="followButton remove">Unfollow</button>
+                </form>
+              @endif
+            @endauth
         </div>
         <div id="grad1"></div>
         <div class="profileSection">
-            <img src="https://i.pinimg.com/736x/ae/a7/a9/aea7a9551cda1f88cc5e6e7ea52709f1.jpg" alt="Profile Picture" class="profileImage">
-            <p class="profileName">{{auth()->user()->username}}</p>
+            <img src="{{$profilePhoto}}" alt="Profile Picture" class="profileImage">
+            <p class="profileName">{{$username}}</p>
         </div>
     </div>
 
     <section class="profileLinks">
         <ul>
             <a href="#" class="active"><li>Overview</li></a>
-            <a href="anime_list.html"><li>Anime List</li></a>
-            <a href="favorites.html"><li>Favorites</li></a>
+            <a href="{{route('animelist', ['user' => $username])}}"><li>Anime List</li></a>
+            <a href="{{route('favorites', ['user' => $username])}}"><li>Favorites</li></a>
         </ul>
     </section>
     
