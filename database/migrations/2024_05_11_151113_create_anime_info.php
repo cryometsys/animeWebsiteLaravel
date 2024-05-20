@@ -12,51 +12,60 @@ return new class extends Migration
     public function up(): void
     {
         // Create the 'anime_info' table first
-        Schema::create('anime_info', function (Blueprint $table) {
+        Schema::create('animes', function (Blueprint $table) {
             $table->increments('anime_id');
             $table->string('title')->unique();
             $table->string('airing_season');
             $table->integer('airing_year');
             $table->integer('episodes');
+            $table->string('animeDuration');
             $table->date('airing_date');
+            $table->date('ending_date');
             $table->string('synopsis');
             $table->string('studio');
             $table->string('status');
+            $table->string('format');
+            $table->string('animeCover')->nullable(false);
             $table->timestamps();
         });
 
         // Create the 'genre' table next
-        Schema::create('genre', function (Blueprint $table) {
+        Schema::create('genres', function (Blueprint $table) {
             $table->increments('genre_id');
             $table->string('genre_name');
+            $table->timestamps();
         });
 
         // Create the 'anime_genre' table last
-        Schema::create('anime_genre', function (Blueprint $table) {
+        Schema::create('anime_genres', function (Blueprint $table) {
             $table->unsignedInteger('anime_id');
             $table->unsignedInteger('genre_id');
+            $table->timestamps();
             $table->primary(['anime_id', 'genre_id']);
 
             $table->foreign('anime_id')
                 ->references('anime_id')
-                ->on('anime_info')
+                ->on('animes')
                 ->onDelete('cascade');
 
             $table->foreign('genre_id')
                 ->references('genre_id')
-                ->on('genre')
+                ->on('genres')
                 ->onDelete('cascade');
         });
 
-        Schema::create('watchlist', function(Blueprint $table) {
+        Schema::create('watchlists', function(Blueprint $table) {
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('anime_id');
             $table->integer('episodes_watched');
+            $table->decimal('user_rating', 2, 1);
+            $table->string('watch_status');
             $table->primary(['user_id', 'anime_id']);
+            $table->timestamps();
 
             $table->foreign('anime_id')
                 ->references('anime_id')
-                ->on('anime_info')
+                ->on('animes')
                 ->onDelete('cascade');
 
             $table->foreign('user_id')
@@ -73,6 +82,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('anime_genre');
         Schema::dropIfExists('genre');
-        Schema::dropIfExists('anime_info');
+        Schema::dropIfExists('animes');
     }
 };

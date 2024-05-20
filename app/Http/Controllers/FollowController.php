@@ -38,4 +38,18 @@ class FollowController extends Controller
         ])->delete();
         return back()->with('success', 'Successfully unfollowed ' . $user->username);
     }
+    public function social(User $user, Request $request) {
+        $users = [];
+        $following = $user->followingUsers()->get();
+        return view('social', compact('following', 'users'));
+    }
+    public function searchUsers(User $user, Request $request) {
+        $searchTerm = $request->input('userSearch');
+        $users = User::where('username', 'like', "%{$searchTerm}%")
+            ->where('user_id', '!=', auth()->user()->user_id)
+            ->limit(5)
+            ->get();
+        $following = $user->followingUsers()->get();
+        return view('social', compact('following', 'users')); 
+    }
 }

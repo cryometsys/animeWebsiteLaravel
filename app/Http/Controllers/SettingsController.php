@@ -39,37 +39,37 @@ class SettingsController extends Controller
         return redirect()->back()->with('success', 'Profile cover updated successfully.');
     }
 
-    public function updateUsername(Request $request) {
-        $request->validate([
-            'username' => ['required', 'string', 'max:255', 'unique:users,username,' . auth()->user()->id],
-        ]);
-        if ($request->username === auth()->user()->username) {
-            return redirect()->back()->with('error', 'Username is the same as the current one.');
-        }
-        auth()->user()->update(['username' => $request->username]);
-        return redirect()->back()->with('success', 'Username updated successfully.');
-    }
-    public function updateEmail(Request $request) {
-        $request->validate([
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . auth()->user()->id],
-        ]);
-        if ($request->email === auth()->user()->email) {
-            return redirect()->back()->with('error', 'Email is the same as the current one.');
-        }
-        auth()->user()->update(['email' => $request->email]);
-        return redirect()->back()->with('success', 'Email updated successfully.');
-    }
+    // public function updateUsername(Request $request) {
+    //     $request->validate([
+    //         'username' => ['required', 'string', 'max:255', 'unique:users,username,' . auth()->user()->id],
+    //     ]);
+    //     if ($request->username === auth()->user()->username) {
+    //         return redirect()->back()->with('error', 'Username is the same as the current one.');
+    //     }
+    //     auth()->user()->update(['username' => $request->username]);
+    //     return redirect()->back()->with('success', 'Username updated successfully.');
+    // }
+    // public function updateEmail(Request $request) {
+    //     $request->validate([
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . auth()->user()->id],
+    //     ]);
+    //     if ($request->email === auth()->user()->email) {
+    //         return redirect()->back()->with('error', 'Email is the same as the current one.');
+    //     }
+    //     auth()->user()->update(['email' => $request->email]);
+    //     return redirect()->back()->with('success', 'Email updated successfully.');
+    // }
 
-    public function updatePassword(Request $request) {
-        $request->validate([
-            'current_password' => ['required', 'password'],
-            'new_password' => ['required', 'confirmed', 'different:current_password'],
-        ]);
-        if (Hash::check($request->new_password, auth()->user()->password)) {
-            return redirect()->back()->with('error', 'New password cannot be the same as the current password.');
-        }
-        auth()->user()->update(['password' => Hash::make($request->new_password)]);
-        return redirect()->back()->with('success', 'Password updated successfully.');
-    }
+    // public function updatePassword(Request $request) {
+    //     $request->validate([
+    //         'current_password' => ['required', 'password'],
+    //         'new_password' => ['required', 'confirmed', 'different:current_password'],
+    //     ]);
+    //     if (Hash::check($request->new_password, auth()->user()->password)) {
+    //         return redirect()->back()->with('error', 'New password cannot be the same as the current password.');
+    //     }
+    //     auth()->user()->update(['password' => Hash::make($request->new_password)]);
+    //     return redirect()->back()->with('success', 'Password updated successfully.');
+    // }
 
 }

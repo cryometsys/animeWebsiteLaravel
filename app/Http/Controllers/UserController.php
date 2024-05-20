@@ -72,28 +72,34 @@ class UserController extends Controller
             'profileCover' => $user->profileCover,
             'followStatus' => $followStatus
         ]);
-        // else return redirect('/');
     }
     public function favorites(User $user) {
+        $followStatus = 0;
+
+        $followStatus = Follow::where([
+            ['user_id', '=', auth()->user()->user_id],
+            ['following_id', '=', $user->user_id]
+        ])
+        ->count();
         return view('favorites', [
             'profilePhoto' => $user->profilePhoto,
             'username' => $user->username, 
-            'profileCover' => $user->profileCover
+            'profileCover' => $user->profileCover,
+            'followStatus' => $followStatus
         ]);
     }
     public function animeList(User $user) {
+        $followStatus = 0;
+        $followStatus = Follow::where([
+            ['user_id', '=', auth()->user()->user_id],
+            ['following_id', '=', $user->user_id]
+        ])
+        ->count();
         return view('anime_list', [
             'profilePhoto' => $user->profilePhoto,
             'username' => $user->username, 
-            'profileCover' => $user->profileCover
+            'profileCover' => $user->profileCover,
+            'followStatus' => $followStatus
         ]);
     }
-    public function social() {
-        return view('social');  
-    }
-    // public function followUser($username) {
-    // // Logic to handle the follow operation
-    // return 'You are now following ' . $username;
-    // }   
-
 }

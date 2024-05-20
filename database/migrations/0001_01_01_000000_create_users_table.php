@@ -21,6 +21,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('profilePhoto')->nullable();
             $table->string('profileCover')->nullable();
+            $table->integer('isadmin')->nullable();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

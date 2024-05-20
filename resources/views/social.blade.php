@@ -2,16 +2,24 @@
 
     <section class="user-panel">
         <div class="searchUser">
-          <input type="text" id="search" placeholder="Search Users">
+          <form action="/{{auth()->user()->username}}/search-users" method="GET">
+            <input type="text" id="search" placeholder="Search Users" name="userSearch">
+            <button type="submit">Search</button>
+          </form>
+          <ul>
+            @if(isset($users))
+              @foreach($users as $user)
+                <li><a href="{{route('overview', ['user' => $user->username])}}">{{ $user->username }}</a></li>
+              @endforeach  
+            @endif
+        </ul>
         </div>
         <div class="following-list">
           <h3>Following</h3>
           <ul>
-            <li><a href="#">Username 1</a></li>
-            <li><a href="#">Username 2</a></li>
-            <li><a href="#">Username 3</a></li>
-            <li><a href="#">Username 4</a></li>
-            <li><a href="#">Username 5</a></li>
+            @foreach ($following as $follow)
+            <li><a href="/user/{{$follow->userBeingFollowed->username}}/overview">{{$follow->userBeingFollowed->username}}</a></li>
+            @endforeach
           </ul>
         </div>
       </section>

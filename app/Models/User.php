@@ -59,4 +59,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function followingUsers() {
+        return $this->hasMany(Follow::class, 'user_id');
+    }
 }

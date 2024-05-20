@@ -3,11 +3,11 @@
     <section class="anime-body">
         <div class="anime-container grid">
             <div class="animeImage">
-                <img src="https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx151807-yxY3olrjZH4k.png" alt="soloLevelingPoster" class="anime-image" srcset="">
+                <img src="/storage/animeCover/{{$anime->animeCover}}" alt="soloLevelingPoster" class="anime-image" srcset="">
             </div>
             <div class="animeIntro">
-                <h1 class="animeTitle">Solo Leveling</h1>
-                <p class="animeSynopsis">They say whatever doesn’t kill you makes you stronger, but that’s not the case for the world’s weakest hunter Sung Jinwoo. After being brutally slaughtered by monsters in a high-ranking dungeon, Jinwoo came back with the System, a program only he could see, that’s leveling him up in every way. Now, he’s inspired to discover the secrets behind his powers and the dungeon that spawned them.</p>
+                <h1 class="animeTitle">{{$anime->title}}</h1>
+                <p class="animeSynopsis">{{$anime->synopsis}}</p>
             </div>
             <div class="listDropdown">
                 <button>Add to list</button>
@@ -21,13 +21,13 @@
             <div class="animeDetails">
                 <p class="animeGenre">Genre: Action | Adventure | Fantasy</p>
                 <p class="animeFormat">Format: TV</p>
-                <p class="animeStatus">Status: Finished</p>
-                <p class="animeEpisode">Episode Count: 12</p>
-                <p class="animeDuration">Duration: 24 minutes</p>
-                <p class="animeSeason">Season: Winter 2024</p>
-                <p class="animeAiring">Airing Date: Jan 7, 2024</p>
-                <p class="animeEnding">Ending Date: Mar 31, 2024</p>
-                <p class="animeStudio">Studios: A-1 Pictures</p>
+                <p class="animeStatus">Status: {{$anime->status}}</p>
+                <p class="animeEpisode">Episode Count: {{$anime->episodes}}</p>
+                <p class="animeDuration">Duration: {{$anime->animeDuration}} minutes</p>
+                <p class="animeSeason">Season: {{$anime->airing_season}} {{$anime->airing_year}}</p>
+                <p class="animeAiring">Airing Date: {{$anime->airing_date}}</p>
+                <p class="animeEnding">Ending Date: {{$anime->ending_date}}</p>
+                <p class="animeStudio">Studios: {{$anime->studio}}</p>
             </div>
             
             <!--
@@ -46,10 +46,10 @@
                   </ul>
             </div>
             <div class="animeRating">
-                <p>#3 Highest Rated Winter 2024</p>
+                <p>#3 Highest Rated {{$anime->airing_season}} {{$anime->airing_year}}</p>
             </div>
             <div class="animePopular">
-                <p>#1 Most Popular Winter 2024</p>
+                <p>#1 Most Popular {{$anime->airing_season}} {{$anime->airing_year}}</p>
             </div>
             <div class="animeEpisodeCount hidden">
                 <p>Episodes Watched: </p>
